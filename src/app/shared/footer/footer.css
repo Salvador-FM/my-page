@@ -1,0 +1,7 @@
+.bg-var {
+  background-color: var(--bg-color);
+}
+
+.neon-green {
+  color: var(--neon-green);
+}
