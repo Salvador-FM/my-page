@@ -1,4 +1,4 @@
-<nav class="sticky top-0 z-50 bg-blur-md shadow-md">
+<nav class="sticky top-0 z-50 shadow-md relative" style="background-color: var(--bg-color);">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
@@ -20,21 +20,22 @@
       <!-- Navigation Links -->
       <ul class="hidden md:flex list-none gap-8 m-0 p-0">
         <li><a href="" class="text-green-600 no-underline transition-colors hover:text-neon-green focus:outline-2 focus:outline-offset-2 focus:outline-neon-green">Perfil</a></li>
-        <li><a href="" class="text-green-600 no-underline transition-colors hover:text-neon-green focus:outline-2 focus:outline-offset-2 focus:outline-neon-green">Skills</a></li>
-        <li><a href="" class="text-green-600 no-underline transition-colors hover:text-neon-green focus:outline-2 focus:outline-offset-2 focus:outline-neon-green">Proyectos</a></li>
-        <li><a href="" class="text-green-600 no-underline transition-colors hover:text-neon-green focus:outline-2 focus:outline-offset-2 focus:outline-neon-green">Contacto</a></li>
+        <li><a href="/skills" class="text-green-600 no-underline transition-colors hover:text-neon-green focus:outline-2 focus:outline-offset-2 focus:outline-neon-green">Skills</a></li>
+        <li><a href="/projects" class="text-green-600 no-underline transition-colors hover:text-neon-green focus:outline-2 focus:outline-offset-2 focus:outline-neon-green">Proyectos</a></li>
+        <li><a href="/contact" class="text-green-600 no-underline transition-colors hover:text-neon-green focus:outline-2 focus:outline-offset-2 focus:outline-neon-green">Contacto</a></li>
       </ul>
     </div>
 
-    <!-- Mobile Menu -->
-    <div 
-      class="md:hidden overflow-hidden transition-all duration-300"
-      [class.max-h-0]="!isMenuOpen()"
-      [class.max-h-48]="isMenuOpen()">
+    <!-- Mobile Menu (overlay) -->
+    <div
+      class="md:hidden absolute left-0 right-0 top-full backdrop-blur-sm shadow-lg origin-top transform transition-transform duration-200"
+      [class.scale-y-0]="!isMenuOpen()"
+      [class.scale-y-100]="isMenuOpen()"
+      style="transform-origin: top;">
       <ul class="list-none flex flex-col m-0 p-0">
-        <li class="border-b border-gray-200"><a href="/home" class="block px-4 py-3 text-green-600 no-underline hover:bg-gray-100 transition-colors">Perfil</a></li>
-        <li class="border-b border-gray-200"><a href="/about" class="block px-4 py-3 text-green-600 no-underline hover:bg-gray-100 transition-colors">Skills</a></li>
-        <li class="border-b border-gray-200"><a href="/services" class="block px-4 py-3 text-green-600 no-underline hover:bg-gray-100 transition-colors">Proyectos</a></li>
+        <li class="border-b border-green-500"><a href="" class="block px-4 py-3 text-green-600 no-underline hover:bg-gray-100 transition-colors">Perfil</a></li>
+        <li class="border-b border-green-500"><a href="/skills" class="block px-4 py-3 text-green-600 no-underline hover:bg-gray-100 transition-colors">Skills</a></li>
+        <li class="border-b border-green-500"><a href="/projects" class="block px-4 py-3 text-green-600 no-underline hover:bg-gray-100 transition-colors">Proyectos</a></li>
         <li><a href="/contact" class="block px-4 py-3 text-green-600 no-underline hover:bg-gray-100 transition-colors">Contacto</a></li>
       </ul>
     </div>

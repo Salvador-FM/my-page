@@ -37,10 +37,9 @@ export class BackgroundWave {
 
     const rows = 80;
     const cols = 120;
-    const spacing = 14;
+    const spacing = 24;
     const perspective = 0.00025;
-    const waveHeight = 18;
-
+    const waveHeight = 28;
     let time = 0;
 
     const bg = getComputedStyle(document.documentElement)
@@ -82,7 +81,7 @@ export class BackgroundWave {
       }
 
       ctx.globalAlpha = 1;
-      time += 0.4;
+      time += 0.2;
       requestAnimationFrame(animate);
     };
 

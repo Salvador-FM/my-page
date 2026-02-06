@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { BackgroundWave } from '../../shared/background-wave/background-wave';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [
+    BackgroundWave
+  ],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

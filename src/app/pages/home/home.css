@@ -1,0 +1,7 @@
+/* Justificar los párrafos de la página Home */
+p {
+	text-align: justify;
+	text-justify: inter-word;
+	hyphens: auto;
+}
+
