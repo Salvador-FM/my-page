@@ -22,7 +22,7 @@
     ]
   },
   "private": true,
-  "packageManager": "pnpm@10.28.1",
+  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
   "dependencies": {
     "@angular/common": "^21.1.0",
     "@angular/compiler": "^21.1.0",
@@ -35,6 +35,7 @@
     "@primeuix/themes": "^2.0.3",
     "chart.js": "^4.5.1",
     "express": "^5.1.0",
+    "lucide-angular": "^0.577.0",
     "primeng": "^21.1.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
@@ -50,6 +51,7 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
+    "vite": "^7.3.1",
     "vitest": "^4.0.8"
   }
 }

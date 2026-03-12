@@ -2,9 +2,7 @@
 
 @import "tailwindcss";
 
-/* =========================
-   Design Tokens
-   ========================= */
+
 :root {
   --bg-color: #222222;
   --neon-green: #39ff14;
@@ -12,13 +10,9 @@
   --screen-curve: 20px;
 }
 
-/* =========================
-   Base styles
-   ========================= */
+
 html,
 body {
-  /* background-color: var(--bg-color); */
-  /* color: var(--neon-green); */
   margin: 0;
 }
 
@@ -34,10 +28,6 @@ body {
   line-height: 1.5;
 }
 
-
-/* =========================
-   Global helpers (opcional)
-   ========================= */
 .screen {
   border-radius: var(--screen-curve);
 }
