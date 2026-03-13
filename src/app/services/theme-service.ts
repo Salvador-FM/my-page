@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { WindowService } from './window-service';
 import { LocalStorageService } from './local-storage-service';
 
@@ -12,29 +12,27 @@ export class ThemeService {
   private windowService = inject(WindowService);
   private storage = inject(LocalStorageService);
 
+  currentTheme = signal<Theme>('light');
+
   initTheme(): Theme {
-
     let theme = this.storage.getItem('theme') as Theme | null;
-
     if (!theme) {
       theme = this.getSystemTheme();
-      this.storage.setItem('theme', theme);
     }
-
+    
+    this.currentTheme.set(theme); // Sincronizamos el signal
     this.applyTheme(theme);
-
     return theme;
   }
 
   setTheme(theme: Theme) {
     this.storage.setItem('theme', theme);
+    this.currentTheme.set(theme); // Actualizamos el signal
     this.applyTheme(theme);
   }
 
   toggleTheme() {
-    const current = this.storage.getItem('theme') as Theme;
-    const next = current === 'dark' ? 'light' : 'dark';
-
+    const next = this.currentTheme() === 'dark' ? 'light' : 'dark';
     this.setTheme(next);
   }
 
@@ -50,12 +48,19 @@ export class ThemeService {
   }
 
   private applyTheme(theme: Theme) {
-
     const win = this.windowService.window;
-
     if (!win) return;
 
-    win.document.documentElement.setAttribute('data-theme', theme);
+    const html = win.document.documentElement;
+
+    if (theme === 'dark') {
+      html.classList.add('dark'); // Esto activa Tailwind y PrimeNG
+    } else {
+      html.classList.remove('dark');
+    }
+
+    // Opcional: Mantener el atributo si quieres usarlo para otros estilos CSS puros
+    html.setAttribute('data-theme', theme);
   }
 
 }

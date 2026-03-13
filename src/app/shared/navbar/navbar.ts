@@ -1,6 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
-import { LocalStorageService } from '../../services/local-storage-service';
+import { ThemeService } from '../../services/theme-service';
 import { LucideAngularModule, SunMoonIcon } from 'lucide-angular';
 import { ButtonModule } from 'primeng/button';
 
@@ -19,10 +19,10 @@ export class Navbar {
   isMenuOpen = signal(false);
   isDarkMode = signal<boolean>(false);
 
-  constructor(private localStorageService: LocalStorageService) {
-    // read the stored theme; default to light when missing
-    const stored = this.localStorageService.getItem('theme');
-    this.isDarkMode.set(stored === 'dark');
+  constructor(private themeService: ThemeService) {
+    // initialise theme via service (handles storage & application)
+    const initial = this.themeService.initTheme();
+    this.isDarkMode.set(initial === 'dark');
   }
 
   toggleMenu() {
@@ -30,12 +30,9 @@ export class Navbar {
   }
 
   toggleMode() {
-    this.isDarkMode.update(mode => {
-      const newMode = !mode;
-      // store a descriptive string instead of a boolean
-      const themeValue = newMode ? 'dark' : 'light';
-      this.localStorageService.setItem('theme', themeValue);
-      return newMode;
-    }); 
+    // flip theme via service; it also persists & updates document
+    this.themeService.toggleTheme();
+    // keep the signal in sync for UI binding
+    this.isDarkMode.update(mode => !mode);
   }
 }
