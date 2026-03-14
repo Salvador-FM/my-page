@@ -3,10 +3,16 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --color-gray-base: #222222;
+  --color-white-400: #e2e2e2;
+}
+
 :root {
   --bg-color: #222222;
   --neon-green: #39ff14;
   --dim-green: #008f11;
+  --color-test: #e2e2e2;
   --screen-curve: 20px;
 }
 
